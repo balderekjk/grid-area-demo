@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .grid {
+            display: grid;
+            grid-template-areas:
+            "nav nav nav nav"
+            "aside main main main"
+            "aside main main main"
+            "ft ft ft ft";
+            grid-template-rows: 1fr 1fr 1fr 1fr;
+            grid-template-columns: repeat(4, 1fr);
+            min-height: 100dvh;
+        }
+        nav {
+            grid-area: nav;
+            background: yellow;
+        }
+        aside {
+            grid-area: aside;
+            background: green;
+        }
+        main {
+            grid-area: main;
+            background: blue;
+        }
+        footer {
+            grid-area: ft;
+            background: salmon;
+        }
+
+        @media screen and (max-width: 1200px) {
+            .grid {
+                grid-template-areas:
+            "aside nav nav"
+            "aside main main"
+            "aside main main"
+            "aside ft ft";
+            grid-template-rows: 1fr 1fr 1fr 6fr;
+            grid-template-columns: repeat(3, 1fr);
+        }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid">
+        <nav></nav>
+        <aside></aside>
+        <main>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur autem natus ipsa nesciunt ex cupiditate, sunt, quibusdam ad, fuga numquam molestias asperiores repellendus illum nisi atque laudantium. Omnis molestias eum fuga quas qui enim, iure itaque tempore libero consectetur explicabo officia dolorem. Error, beatae! Ullam, temporibus porro. Facere cupiditate eius voluptate maiores ex minus. Necessitatibus id praesentium eius iste in.</main>
+        <footer></footer>
+    </div>
+</body>
+</html>
