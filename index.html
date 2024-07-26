@@ -1,57 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        .grid {
-            display: grid;
-            grid-template-areas:
-            "nav nav nav nav"
-            "aside main main main"
-            "aside main main main"
-            "ft ft ft ft";
-            grid-template-rows: 1fr 1fr 1fr 1fr;
-            grid-template-columns: repeat(4, 1fr);
-            min-height: 100dvh;
-        }
-        nav {
-            grid-area: nav;
-            background: yellow;
-        }
-        aside {
-            grid-area: aside;
-            background: green;
-        }
-        main {
-            grid-area: main;
-            background: blue;
-        }
-        footer {
-            grid-area: ft;
-            background: salmon;
-        }
+      body {
+        margin: 0;
+        font-family: sans-serif;
+        font-size: 1.1em;
+      }
+      .grid {
+        display: grid;
+        grid-template-areas:
+          "nav nav nav"
+          "aside main main"
+          "ft ft ft";
+        grid-template-rows: auto 1fr auto;
+        grid-template-columns: 200px repeat(2, 1fr);
+        min-height: 120dvh;
+        min-width: 120dvw;
+      }
+      .grid > * {
+        padding: 1rem;
+      }
+      nav {
+        grid-area: nav;
+        background: yellow;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+      }
+      aside {
+        grid-area: aside;
+        background: green;
+        color: aliceblue;
+        position: sticky;
+        left: 0;
+      }
+      main {
+        grid-area: main;
+        background: blue;
+        color: aliceblue;
+      }
+      footer {
+        grid-area: ft;
+        background: salmon;
+      }
 
-        @media screen and (max-width: 1200px) {
-            .grid {
-                grid-template-areas:
+      @media screen and (max-width: 1200px) {
+        .grid {
+          grid-template-areas:
             "aside nav nav"
             "aside main main"
-            "aside main main"
             "aside ft ft";
-            grid-template-rows: 1fr 1fr 1fr 6fr;
-            grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: auto 2fr auto 1fr; /* Last 1fr adds some trolling whitespace */
         }
+        nav {
+            z-index: 0;
         }
+        aside {
+            z-index: 999;
+            top: 0;
+        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="grid">
-        <nav></nav>
-        <aside></aside>
-        <main>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur autem natus ipsa nesciunt ex cupiditate, sunt, quibusdam ad, fuga numquam molestias asperiores repellendus illum nisi atque laudantium. Omnis molestias eum fuga quas qui enim, iure itaque tempore libero consectetur explicabo officia dolorem. Error, beatae! Ullam, temporibus porro. Facere cupiditate eius voluptate maiores ex minus. Necessitatibus id praesentium eius iste in.</main>
-        <footer></footer>
+      <nav>
+          This is set to auto so it only fills the space necessary. Also, my
+          position is sticky! I'm anchored to top: 0. Check my z-index.
+      </nav>
+      <aside>I also am auto. Check my z-index. And what happens at 1200px.</aside>
+      <main>I am not auto. I take up <strong>1fr</strong>.</main>
+      <footer>I also am auto.</footer>
     </div>
-</body>
+  </body>
 </html>
